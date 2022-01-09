@@ -8,17 +8,17 @@ namespace Binner.Model.Common
         /// The provider credential
         /// </summary>
         [Key, MaxLength(32)]
-        public string Provider { get; set; }
+        public string? Provider { get; set; }
 
         /// <summary>
         /// The access token
         /// </summary>
-        public string AccessToken { get; set; }
+        public string? AccessToken { get; set; }
 
         /// <summary>
         /// The refresh token
         /// </summary>
-        public string RefreshToken { get; set; }
+        public string? RefreshToken { get; set; }
 
         /// <summary>
         /// The date the Access token was created
@@ -35,9 +35,12 @@ namespace Binner.Model.Common
         /// </summary>
         public int? UserId { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as OAuthCredential);
+            if (obj == null) return false;
+            if (obj is OAuthCredential credential)
+                return Equals(credential);
+            return false;
         }
 
         public bool Equals(OAuthCredential other)

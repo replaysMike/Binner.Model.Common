@@ -5,7 +5,7 @@
         /// <summary>
         /// Property to order by
         /// </summary>
-        string OrderBy { get; set; }
+        string? OrderBy { get; set; }
 
         /// <summary>
         /// Direction to sort

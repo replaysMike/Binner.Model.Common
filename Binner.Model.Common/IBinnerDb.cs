@@ -50,7 +50,7 @@
         /// <summary>
         /// A checksum for validating the database contents
         /// </summary>
-        string Checksum { get; }
+        string? Checksum { get; }
 
     }
 }

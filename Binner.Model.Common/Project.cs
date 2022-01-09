@@ -16,17 +16,17 @@ namespace Binner.Model.Common
         /// <summary>
         /// Project name
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Project description
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Project location
         /// </summary>
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
         /// <summary>
         /// Project color
@@ -43,9 +43,12 @@ namespace Binner.Model.Common
         /// </summary>
         public int? UserId { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as Project);
+            if (obj == null) return false;
+            if (obj is Project project)
+                return Equals(project);
+            return false;
         }
 
         public bool Equals(Project other)

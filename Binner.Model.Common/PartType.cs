@@ -21,7 +21,7 @@ namespace Binner.Model.Common
         /// <summary>
         /// The name of the part type
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Creation date
@@ -33,9 +33,12 @@ namespace Binner.Model.Common
         /// </summary>
         public int? UserId { get; set; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as PartType);
+            if (obj == null) return false;
+            if (obj is PartType partType)
+                return Equals(partType);
+            return false;
         }
 
         public bool Equals(PartType other)

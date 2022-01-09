@@ -22,7 +22,7 @@ namespace Binner.Model.Common
         /// <summary>
         /// Property to order by
         /// </summary>
-        public string OrderBy { get; set; }
+        public string? OrderBy { get; set; }
 
         /// <summary>
         /// Direction to sort
@@ -32,11 +32,11 @@ namespace Binner.Model.Common
         /// <summary>
         /// Property to filter by
         /// </summary>
-        public string By { get; set; }
+        public string? By { get; set; }
 
         /// <summary>
         /// Property value to filter by
         /// </summary>
-        public string Value { get; set; }
+        public string? Value { get; set; }
     }
 }

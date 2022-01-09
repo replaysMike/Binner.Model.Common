@@ -32,22 +32,22 @@ namespace Binner.Model.Common
         /// The main part number
         /// </summary>
         [MaxLength(64)]
-        public string PartNumber { get; set; }
+        public string? PartNumber { get; set; }
 
         /// <summary>
         /// The Digikey part number
         /// </summary>
-        public string DigiKeyPartNumber { get; set; }
+        public string? DigiKeyPartNumber { get; set; }
 
         /// <summary>
         /// The Mouser part number
         /// </summary>
-        public string MouserPartNumber { get; set; }
+        public string? MouserPartNumber { get; set; }
 
         /// <summary>
         /// Description of part
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Type of part
@@ -62,27 +62,27 @@ namespace Binner.Model.Common
         /// <summary>
         /// Package Type (eg. DIP8)
         /// </summary>
-        public string PackageType { get; set; }
+        public string? PackageType { get; set; }
 
         /// <summary>
         /// Product Url
         /// </summary>
-        public string ProductUrl { get; set; }
+        public string? ProductUrl { get; set; }
 
         /// <summary>
         /// Image url
         /// </summary>
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         /// <summary>
         /// The supplier that provides the lowest cost
         /// </summary>
-        public string LowestCostSupplier { get; set; }
+        public string? LowestCostSupplier { get; set; }
 
         /// <summary>
         /// The product page Url for the lowest cost supplier
         /// </summary>
-        public string LowestCostSupplierUrl { get; set; }
+        public string? LowestCostSupplierUrl { get; set; }
 
         /// <summary>
         /// Project associated with the part
@@ -92,37 +92,37 @@ namespace Binner.Model.Common
         /// <summary>
         /// Additional keywords
         /// </summary>
-        public ICollection<string> Keywords { get; set; }
+        public ICollection<string>? Keywords { get; set; }
 
         /// <summary>
         /// Datasheet URL
         /// </summary>
-        public string DatasheetUrl { get; set; }
+        public string? DatasheetUrl { get; set; }
 
         /// <summary>
         /// Location of part (i.e. warehouse, room)
         /// </summary>
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
         /// <summary>
         /// Bin number (i.e. Shelf)
         /// </summary>
-        public string BinNumber { get; set; }
+        public string? BinNumber { get; set; }
 
         /// <summary>
         /// Secondary Bin number (i.e. Bin)
         /// </summary>
-        public string BinNumber2 { get; set; }
+        public string? BinNumber2 { get; set; }
 
         /// <summary>
         /// Manufacturer name
         /// </summary>
-        public string Manufacturer { get; set; }
+        public string? Manufacturer { get; set; }
 
         /// <summary>
         /// The manufacturer part number
         /// </summary>
-        public string ManufacturerPartNumber { get; set; }
+        public string? ManufacturerPartNumber { get; set; }
 
         /// <summary>
         /// Optional user id to associate
@@ -134,9 +134,12 @@ namespace Binner.Model.Common
         /// </summary>
         public DateTime DateCreatedUtc { get; set; } = DateTime.UtcNow;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as Part);
+            if (obj == null) return false;
+            if (obj is Part part)
+                return Equals(part);
+            return false;
         }
 
         public bool Equals(Part other)
