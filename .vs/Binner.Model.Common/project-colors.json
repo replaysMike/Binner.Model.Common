@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "642f73dd-7850-497b-bce9-f2edcce7a60d": {
+      "ProjectGuid": "642f73dd-7850-497b-bce9-f2edcce7a60d",
+      "DisplayName": "Binner.Model.Common",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

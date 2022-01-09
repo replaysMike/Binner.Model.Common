@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binner.Model.Common", "Binner.Model.Common\Binner.Model.Common.csproj", "{642F73DD-7850-497B-BCE9-F2EDCCE7A60D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{642F73DD-7850-497B-BCE9-F2EDCCE7A60D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642F73DD-7850-497B-BCE9-F2EDCCE7A60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642F73DD-7850-497B-BCE9-F2EDCCE7A60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642F73DD-7850-497B-BCE9-F2EDCCE7A60D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85326506-101F-4C51-A49A-5E2931400AF0}
+	EndGlobalSection
+EndGlobal
