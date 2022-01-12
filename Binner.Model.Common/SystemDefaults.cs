@@ -31,39 +31,39 @@
             IC,
             Hardware,
             Other,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             OpAmp,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Amplifier,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Memory,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Logic,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Interface,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Microcontroller,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             Clock,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             ADC,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             VoltageRegulator,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             EnergyMetering,
-            [Parent(DefaultPartTypes.IC)]
+            [ParentPartType(DefaultPartTypes.IC)]
             LedDriver,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             MOSFET,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             IGBT,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             JFET,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             SCR,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             DIAC,
-            [Parent(DefaultPartTypes.Transistor)]
+            [ParentPartType(DefaultPartTypes.Transistor)]
             TRIAC,
         }
     }
