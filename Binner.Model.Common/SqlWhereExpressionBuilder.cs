@@ -17,13 +17,14 @@ namespace Binner.Model.Common
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="expression"></param>
+        /// <param name="quotePropertyNames">True to surround property names with double quotes</param>
         /// <param name="encapsulatePropertyNames">True to surround property names with []</param>
         /// <returns></returns>
-        public WhereCondition ToParameterizedSql<T>(Expression<Func<T, bool>> expression, bool encapsulatePropertyNames = true)
+        public WhereCondition ToParameterizedSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames, bool encapsulatePropertyNames = true)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             var i = 1;
-            return RecurseExpression(ref i, expression.Body, isUnary: true, encapsulatePropertyNames: encapsulatePropertyNames);
+            return RecurseExpression(ref i, expression.Body, isUnary: true, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames);
         }
 
         /// <summary>
@@ -31,13 +32,14 @@ namespace Binner.Model.Common
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="expression"></param>
+        /// <param name="quotePropertyNames">True to surround property names with double quotes</param>
         /// <param name="encapsulatePropertyNames">True to surround property names with []</param>
         /// <returns></returns>
-        public string? ToSql<T>(Expression<Func<T, bool>> expression, bool encapsulatePropertyNames = true)
+        public string? ToSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames, bool encapsulatePropertyNames = true)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             var i = 1;
-            var whereParts = RecurseExpression(ref i, expression.Body, isUnary: true, encapsulatePropertyNames: encapsulatePropertyNames);
+            var whereParts = RecurseExpression(ref i, expression.Body, isUnary: true, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames);
 
             if (!whereParts.Parameters.Any())
                 return whereParts?.Sql;
@@ -52,21 +54,20 @@ namespace Binner.Model.Common
             return finalQuery.ToString();
         }
 
-        private WhereCondition RecurseExpression(ref int i, Expression? expression, string? callStackName = null, bool isUnary = false, string? prefix = null, string? postfix = null, bool encapsulatePropertyNames = true)
+        private WhereCondition RecurseExpression(ref int i, Expression? expression, string? callStackName = null, bool isUnary = false, string? prefix = null, string? postfix = null, bool quotePropertyNames = false, bool encapsulatePropertyNames = true)
         {
             if (expression is null)
                 return new WhereCondition();
             if (expression is UnaryExpression unary)
             {
-                return WhereCondition.Concat(NodeTypeToString(unary.NodeType), RecurseExpression(ref i, unary.Operand, null, true, encapsulatePropertyNames: encapsulatePropertyNames));
+                return WhereCondition.Concat(NodeTypeToString(unary.NodeType), RecurseExpression(ref i, unary.Operand, null, true, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames));
             }
             if (expression is BinaryExpression body)
             {
-                return WhereCondition.Concat(RecurseExpression(ref i, body.Left, encapsulatePropertyNames: encapsulatePropertyNames), NodeTypeToString(body.NodeType), RecurseExpression(ref i, body.Right, encapsulatePropertyNames: encapsulatePropertyNames));
+                return WhereCondition.Concat(RecurseExpression(ref i, body.Left, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), NodeTypeToString(body.NodeType), RecurseExpression(ref i, body.Right, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames));
             }
-            if (expression is ConstantExpression)
+            if (expression is ConstantExpression constant)
             {
-                var constant = (ConstantExpression)expression;
                 var value = constant.Value;
                 if (value is null)
                     return new WhereCondition();
@@ -109,30 +110,30 @@ namespace Binner.Model.Common
 
                 if (member.Expression is MemberExpression)
                 {
-                    return RecurseExpression(ref i, member.Expression, memberName, encapsulatePropertyNames: encapsulatePropertyNames);
+                    return RecurseExpression(ref i, member.Expression, memberName, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames);
                 }
                 if (member.Expression is ConstantExpression)
                 {
                     var name = member.Member.Name;
                     var constantExpression = member.Expression as ConstantExpression;
-                    var val = constantExpression?.Value.GetFieldValue(name);
-                    var properties = val.GetProperties(PropertyOptions.HasGetter);
+                    var value = constantExpression?.Value.GetFieldValue(name);
+                    var properties = value.GetProperties(PropertyOptions.HasGetter);
                     object? callStackValue = null;
                     if (properties.Any(x => x.Name == callStackName))
-                        callStackValue = val.GetPropertyValue(callStackName);
+                        callStackValue = value.GetPropertyValue(callStackName);
                     else
-                        callStackValue = val.GetFieldValue(callStackName);
+                        callStackValue = value.GetFieldValue(callStackName);
 
                     return WhereCondition.IsParameter(i++, callStackValue);
                 }
                 if (member.Member is PropertyInfo property)
                 {
-                    var colName = property.Name;
+                    var columnName = property.Name;
                     if (isUnary && member.Type == typeof(bool))
                     {
-                        return WhereCondition.Concat(RecurseExpression(ref i, expression, encapsulatePropertyNames: encapsulatePropertyNames), "=", WhereCondition.IsParameter(i++, true));
+                        return WhereCondition.Concat(RecurseExpression(ref i, expression, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), "=", WhereCondition.IsParameter(i++, true));
                     }
-                    return encapsulatePropertyNames ? WhereCondition.IsSql("[" + colName + "]") : WhereCondition.IsSql(colName);
+                    return WhereCondition.IsSql(Surround(columnName, quotePropertyNames, encapsulatePropertyNames));
                 }
                 if (member.Member is FieldInfo)
                 {
@@ -152,15 +153,15 @@ namespace Binner.Model.Common
                 // LIKE queries:
                 if (methodCall.Method == typeof(string).GetMethod("Contains", new[] { typeof(string) }))
                 {
-                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'%", postfix: "%'", encapsulatePropertyNames: encapsulatePropertyNames));
+                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'%", postfix: "%'", quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames));
                 }
                 if (methodCall.Method == typeof(string).GetMethod("StartsWith", new[] { typeof(string) }))
                 {
-                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'", postfix: "%'", encapsulatePropertyNames: encapsulatePropertyNames));
+                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'", postfix: "%'", quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames));
                 }
                 if (methodCall.Method == typeof(string).GetMethod("EndsWith", new[] { typeof(string) }))
                 {
-                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'%", postfix: "'", encapsulatePropertyNames: encapsulatePropertyNames));
+                    return WhereCondition.Concat(RecurseExpression(ref i, methodCall.Object, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), "LIKE", RecurseExpression(ref i, methodCall.Arguments[0], prefix: "'%", postfix: "'", quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames));
                 }
                 // IN queries:
                 if (methodCall.Method.Name == "Contains")
@@ -186,11 +187,21 @@ namespace Binner.Model.Common
                     var values = (IEnumerable?)GetValue<object>(collection);
                     if (values is null)
                         throw new ParseException($"Unsupported null values: {collection.Type.Name}");
-                    return WhereCondition.Concat(RecurseExpression(ref i, property, encapsulatePropertyNames: encapsulatePropertyNames), "IN", WhereCondition.IsCollection(ref i, values));
+                    return WhereCondition.Concat(RecurseExpression(ref i, property, quotePropertyNames: quotePropertyNames, encapsulatePropertyNames: encapsulatePropertyNames), "IN", WhereCondition.IsCollection(ref i, values));
                 }
                 throw new ParseException($"Unsupported method call: {methodCall.Method.Name}");
             }
             throw new ParseException($"Unsupported expression: {expression.GetType().Name}");
+        }
+
+        private static string Surround(string columnName, bool quotePropertyNames, bool encapsulatePropertyNames)
+        {
+            var columnNameFormatted = columnName;
+            if (encapsulatePropertyNames)
+                columnNameFormatted = $"[{columnNameFormatted}]";
+            if (quotePropertyNames)
+                columnNameFormatted = @$"""{columnNameFormatted}]""";
+            return columnNameFormatted;
         }
 
         private static object? GetValue<T>(Expression member)

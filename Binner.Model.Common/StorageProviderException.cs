@@ -27,7 +27,7 @@ namespace Binner.Model.Common
 
         protected StorageProviderException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
-
+            ProviderName = string.Empty;
         }
     }
 }
