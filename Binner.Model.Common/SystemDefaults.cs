@@ -29,6 +29,8 @@
             Cable,
             Connector,
             IC,
+            Module,
+            Evaluation,
             Hardware,
             Other,
             [ParentPartType(DefaultPartTypes.IC)]
@@ -36,23 +38,113 @@
             [ParentPartType(DefaultPartTypes.IC)]
             Amplifier,
             [ParentPartType(DefaultPartTypes.IC)]
-            Memory,
+            MemoryIc,
             [ParentPartType(DefaultPartTypes.IC)]
-            Logic,
+            LogicIc,
             [ParentPartType(DefaultPartTypes.IC)]
-            Interface,
+            InterfaceIc,
             [ParentPartType(DefaultPartTypes.IC)]
             Microcontroller,
             [ParentPartType(DefaultPartTypes.IC)]
-            Clock,
+            ClockIc,
             [ParentPartType(DefaultPartTypes.IC)]
             ADC,
             [ParentPartType(DefaultPartTypes.IC)]
-            VoltageRegulator,
+            VoltageRegulatorIc,
             [ParentPartType(DefaultPartTypes.IC)]
-            EnergyMetering,
+            EnergyMeteringIc,
             [ParentPartType(DefaultPartTypes.IC)]
-            LedDriver,
+            LedDriverIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            AudioIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            ComparatorIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            CounterIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            DividerIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            PMIC,
+            [ParentPartType(DefaultPartTypes.IC)]
+            FPGA,
+            [ParentPartType(DefaultPartTypes.IC)]
+            DataAcquisitionIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            EmbeddedIc,
+            [ParentPartType(DefaultPartTypes.IC)]
+            SpecializedIc,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            CeramicCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            ElectrolyticCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            FilmCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            MicaCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            NonPolarizedCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            SupercapacitorCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            PaperCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            VariableCapacitor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            CarbonFilmResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            MetalFilmResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            WirewoundResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            MetalOxideResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            MetalStripResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            PowerResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            ResistorArray,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            VariableResistor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            AirCoreInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            IronCoreInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            FerriteCoreInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            IronPowderInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            LaminatedCoreInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            BobbinInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            ToroidalInductor,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            MultiLayerCeramicInductor,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            Zener,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            Schottky,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            SmallSignalDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            LargeSignalDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            Shockley,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            PeltierDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            GunnDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            TunnelDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            StepRecoveryDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            VaractorDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            TransientVoltageSuppressionDiode,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            CrystalDiode,
             [ParentPartType(DefaultPartTypes.Transistor)]
             MOSFET,
             [ParentPartType(DefaultPartTypes.Transistor)]
@@ -65,6 +157,170 @@
             DIAC,
             [ParentPartType(DefaultPartTypes.Transistor)]
             TRIAC,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            ElectromagneticRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            LatchingRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            SolidStateRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            ReedRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            TimeRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            ThermalRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            SequenceRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            RotaryRelay,
+            [ParentPartType(DefaultPartTypes.Relay)]
+            HighVoltageRelay,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            StepDownTransformer,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            StepUpTransformer,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            IsolationTransformer,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            SolidStateTransformer,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            RfTransformer,
+            [ParentPartType(DefaultPartTypes.Transformer)]
+            AudioTransformer,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            SensorAssembly,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            LightSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            ImagingSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            CurrentSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            VoltageSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            LoadSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            DistanceSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            ForceSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            RfSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            MotionSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            CapacitiveSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            BiometricSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            EnvironmentSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            RadiationSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            OtherSensor,
+            [ParentPartType(DefaultPartTypes.Module)]
+            WirelessModule,
+            [ParentPartType(DefaultPartTypes.Module)]
+            CurrentVoltageModule,
+            [ParentPartType(DefaultPartTypes.Module)]
+            ExperimentModule,
+            [ParentPartType(DefaultPartTypes.Module)]
+            RaspberryPiShield,
+            [ParentPartType(DefaultPartTypes.Module)]
+            ArduinoShield,
+            [ParentPartType(DefaultPartTypes.Module)]
+            EvaluationModule,
+            [ParentPartType(DefaultPartTypes.Module)]
+            OtherModule,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            RaspberryPi,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Arduino,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            BeagleBoard,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            NVidiaJetson,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Teensy,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Launchpad,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Alchitry,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Amica,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Particle,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Sparkfun,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Qwiic,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Pic,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            STM32,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            MikroElektronika,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            BasicEvaluation,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Pine,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Odriod,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            LattePanda,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Seeeduino,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            SiliconLabs,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            RockPi,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            Udoo,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            PocketBeagle,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            AsusTinker,
+            [ParentPartType(DefaultPartTypes.Evaluation)]
+            OtherEvaluation,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Adapter,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Screw,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Washer,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Nut,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Standoff,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Gear,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Coupler,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            BallBearing,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Bracket,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Shaft,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Spacer,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Tube,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Plate,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            RawMaterial,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Mount,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Belt,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Hub,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Fan,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Wheel,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Robotics,
         }
     }
 }
