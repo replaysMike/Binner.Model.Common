@@ -20,7 +20,7 @@ namespace Binner.Model.Common
         /// <param name="quotePropertyNames">True to surround property names with double quotes</param>
         /// <param name="encapsulatePropertyNames">True to surround property names with []</param>
         /// <returns></returns>
-        public WhereCondition ToParameterizedSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames, bool encapsulatePropertyNames = true)
+        public WhereCondition ToParameterizedSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames = false, bool encapsulatePropertyNames = true)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             var i = 1;
@@ -35,7 +35,7 @@ namespace Binner.Model.Common
         /// <param name="quotePropertyNames">True to surround property names with double quotes</param>
         /// <param name="encapsulatePropertyNames">True to surround property names with []</param>
         /// <returns></returns>
-        public string? ToSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames, bool encapsulatePropertyNames = true)
+        public string? ToSql<T>(Expression<Func<T, bool>> expression, bool quotePropertyNames = false, bool encapsulatePropertyNames = true)
         {
             if (expression == null) throw new ArgumentNullException(nameof(expression));
             var i = 1;

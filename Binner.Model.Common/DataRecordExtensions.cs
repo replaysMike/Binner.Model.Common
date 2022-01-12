@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace Binner.StorageProvider.Postgresql
+namespace Binner.Model.Common
 {
     public static class DataRecordExtensions
     {
