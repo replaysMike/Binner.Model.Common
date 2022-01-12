@@ -200,7 +200,7 @@ namespace Binner.Model.Common
             if (encapsulatePropertyNames)
                 columnNameFormatted = $"[{columnNameFormatted}]";
             if (quotePropertyNames)
-                columnNameFormatted = @$"""{columnNameFormatted}]""";
+                columnNameFormatted = @$"""{columnNameFormatted}""";
             return columnNameFormatted;
         }
 
