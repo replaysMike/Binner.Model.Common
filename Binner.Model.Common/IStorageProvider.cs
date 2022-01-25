@@ -168,10 +168,17 @@ namespace Binner.Model.Common
         Task<bool> DeleteProjectAsync(Project project, IUserContext userContext);
 
         /// <summary>
-        /// Get total parts count
+        /// Get total parts count including quantities
         /// </summary>
         /// <returns></returns>
         Task<long> GetPartsCountAsync(IUserContext userContext);
+
+        /// <summary>
+        /// Get total number of unique parts
+        /// </summary>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<long> GetUniquePartsCountAsync(IUserContext userContext);
 
         /// <summary>
         /// Get financial value/cost of all parts
