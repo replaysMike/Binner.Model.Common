@@ -16,9 +16,9 @@
         /// </summary>
         public IEnumerable<T> Items { get; }
 
-        public PaginatedResponse(int totalPages, IEnumerable<T> items)
+        public PaginatedResponse(int totalItems, IEnumerable<T> items)
         {
-            TotalItems = totalPages;
+            TotalItems = totalItems;
             Items = items;
         }
     }
