@@ -76,7 +76,7 @@ namespace Binner.Model.Common
         /// <param name="partNumber"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<ICollection<Part>> GetPartsAsync(PaginatedRequest request, IUserContext userContext);
+        Task<PaginatedResponse<Part>> GetPartsAsync(PaginatedRequest request, IUserContext userContext);
 
         /// <summary>
         /// Get all parts
@@ -220,6 +220,6 @@ namespace Binner.Model.Common
         /// <param name="request"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<ICollection<Part>> GetLowStockAsync(PaginatedRequest request, IUserContext userContext);
+        Task<PaginatedResponse<Part>> GetLowStockAsync(PaginatedRequest request, IUserContext userContext);
     }
 }
