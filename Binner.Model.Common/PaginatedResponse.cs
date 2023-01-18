@@ -6,12 +6,19 @@
     /// <typeparam name="T"></typeparam>
     public class PaginatedResponse<T>
     {
-        public int TotalPages { get; }
+        /// <summary>
+        /// The total number of items available
+        /// </summary>
+        public int TotalItems { get; }
+        
+        /// <summary>
+        /// The page of items requested
+        /// </summary>
         public IEnumerable<T> Items { get; }
 
         public PaginatedResponse(int totalPages, IEnumerable<T> items)
         {
-            TotalPages = totalPages;
+            TotalItems = totalPages;
             Items = items;
         }
     }
