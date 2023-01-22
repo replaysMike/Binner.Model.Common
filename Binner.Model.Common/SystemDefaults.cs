@@ -321,6 +321,91 @@
             Wheel,
             [ParentPartType(DefaultPartTypes.Hardware)]
             Robotics,
+
+            // added out of order (don't change order or keys will change)
+            [ParentPartType(DefaultPartTypes.IC)]
+            FlipFlopIc,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            AdjustableInductor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            PressureSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            Photodiodes,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            ColorSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            HumiditySensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            GasSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            FlowSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            TiltSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            ProximitySensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            TemperatureSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            TouchSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            UltrasonicSensor,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Spring,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Grommet,
+            [ParentPartType(DefaultPartTypes.Transistor)]
+            BJT,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            AudioSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            LiquidSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            MagneticSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            HallEffectSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            SmokeSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            AirQualitySensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            AccelerationSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            PositionSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            GyroscopeSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            InclineSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            SpeedSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            VibrationSensor,
+            [ParentPartType(DefaultPartTypes.Sensor)]
+            InfraredSensor,
+            [ParentPartType(DefaultPartTypes.Hardware)]
+            Enclosure,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            CeramicResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            CurrentSenseResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            HighFrequencyResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            MetalFoilResistor,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            ResistorKit,
+            [ParentPartType(DefaultPartTypes.Resistor)]
+            Potentiometer,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            SafetyCapacitor,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            TantalumCapacitor,
+            Kit,
+            [ParentPartType(DefaultPartTypes.Capacitor)]
+            CapacitorKit,
+            [ParentPartType(DefaultPartTypes.Diode)]
+            DiodeKit,
+            [ParentPartType(DefaultPartTypes.Inductor)]
+            InductorKit,
         }
     }
 }
