@@ -5,7 +5,7 @@ namespace Binner.Model.Common
     /// <summary>
     /// Defines a type of part or category/sub-category
     /// </summary>
-    public class PartType : IEntity
+    public class PartType : IEntity, IEquatable<PartType>
     {
         /// <summary>
         /// Primary key
@@ -41,7 +41,7 @@ namespace Binner.Model.Common
             return false;
         }
 
-        public bool Equals(PartType other)
+        public bool Equals(PartType? other)
         {
             return other != null && PartTypeId == other.PartTypeId && UserId == other.UserId;
         }

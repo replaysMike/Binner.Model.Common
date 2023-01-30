@@ -2,7 +2,7 @@
 
 namespace Binner.Model.Common
 {
-    public class OAuthCredential : IEntity
+    public class OAuthCredential : IEntity, IEquatable<OAuthCredential>
     {
         /// <summary>
         /// The provider credential
@@ -43,7 +43,7 @@ namespace Binner.Model.Common
             return false;
         }
 
-        public bool Equals(OAuthCredential other)
+        public bool Equals(OAuthCredential? other)
         {
             return other != null && Provider == other.Provider && UserId == other.UserId;
         }

@@ -51,6 +51,11 @@
         public ICollection<Part> Parts { get; set; } = new List<Part>();
 
         /// <summary>
+        /// Stored/uploaded files
+        /// </summary>
+        public ICollection<StoredFile> StoredFiles { get; set; } = new List<StoredFile>();
+
+        /// <summary>
         /// A checksum for validating the database contents
         /// </summary>
         public string? Checksum { get; set; }

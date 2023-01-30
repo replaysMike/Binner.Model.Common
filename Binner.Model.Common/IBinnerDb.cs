@@ -48,6 +48,11 @@
         ICollection<Part> Parts { get; }
 
         /// <summary>
+        /// List of stored/uploaded files
+        /// </summary>
+        ICollection<StoredFile> StoredFiles { get; }
+
+        /// <summary>
         /// A checksum for validating the database contents
         /// </summary>
         string? Checksum { get; }

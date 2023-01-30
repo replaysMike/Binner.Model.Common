@@ -5,7 +5,7 @@ namespace Binner.Model.Common
     /// <summary>
     /// A Part
     /// </summary>
-    public class Part : IEntity
+    public class Part : IEntity, IEquatable<Part>
     {
         /// <summary>
         /// Primary key
@@ -142,7 +142,7 @@ namespace Binner.Model.Common
             return false;
         }
 
-        public bool Equals(Part other)
+        public bool Equals(Part? other)
         {
             return other != null && PartId == other.PartId && UserId == other.UserId;
         }

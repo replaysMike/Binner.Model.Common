@@ -3,35 +3,45 @@
 namespace Binner.Model.Common
 {
     /// <summary>
-    /// A user defined project
+    /// A user uploaded file
     /// </summary>
-    public class Project : IEntity, IEquatable<Project>
+    public class StoredFile : IEntity
     {
         /// <summary>
         /// Primary key
         /// </summary>
         [Key]
-        public long ProjectId { get; set; }
+        public long StoredFileId { get; set; }
 
         /// <summary>
-        /// Project name
+        /// Filename of the uploaded file
         /// </summary>
-        public string? Name { get; set; }
+        public string FileName { get; set; } = null!;
 
         /// <summary>
-        /// Project description
+        /// Original filename of the uploaded file
         /// </summary>
-        public string? Description { get; set; }
+        public string OriginalFileName { get; set; } = null!;
 
         /// <summary>
-        /// Project location
+        /// The type of file stored
         /// </summary>
-        public string? Location { get; set; }
+        public StoredFileType StoredFileType { get; set; } = StoredFileType.Other;
 
         /// <summary>
-        /// Project color
+        /// The associated part
         /// </summary>
-        public int Color { get; set; }
+        public long PartId { get; set; }
+
+        /// <summary>
+        /// The file length in bytes
+        /// </summary>
+        public int FileLength { get; set; }
+
+        /// <summary>
+        /// The crc 32 checksum of the file
+        /// </summary>
+        public int Crc32 { get; set; }
 
         /// <summary>
         /// Creation date
@@ -46,14 +56,14 @@ namespace Binner.Model.Common
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
-            if (obj is Project project)
+            if (obj is StoredFile project)
                 return Equals(project);
             return false;
         }
 
-        public bool Equals(Project? other)
+        public bool Equals(StoredFile? other)
         {
-            return other != null && ProjectId == other.ProjectId && UserId == other.UserId;
+            return other != null && StoredFileId == other.StoredFileId && UserId == other.UserId;
         }
 
         public override int GetHashCode()
@@ -61,14 +71,14 @@ namespace Binner.Model.Common
 #if (NET462 || NET471)
             return ProjectId.GetHashCode() ^ (UserId?.GetHashCode() ?? 0);
 #else
-            return HashCode.Combine(ProjectId, UserId);
+            return HashCode.Combine(StoredFileId, UserId);
 #endif
 
         }
 
         public override string ToString()
         {
-            return $"{ProjectId}: {Name}";
+            return $"{StoredFileId}: {FileName}";
         }
     }
 }
