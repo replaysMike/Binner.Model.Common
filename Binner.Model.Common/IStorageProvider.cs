@@ -221,5 +221,45 @@ namespace Binner.Model.Common
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<PaginatedResponse<Part>> GetLowStockAsync(PaginatedRequest request, IUserContext userContext);
+
+        /// <summary>
+        /// Create a new user uploaded file
+        /// </summary>
+        /// <param name="storedFile"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<StoredFile> AddStoredFileAsync(StoredFile storedFile, IUserContext userContext);
+
+        /// <summary>
+        /// Get an existing user uploaded file
+        /// </summary>
+        /// <param name="storedFileId"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<StoredFile> GetStoredFileAsync(long storedFileId, IUserContext userContext);
+
+        /// <summary>
+        /// Get an existing user uploaded file
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<StoredFile> GetStoredFileAsync(string filename, IUserContext userContext);
+
+        /// <summary>
+        /// Get existing user uploaded files
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<ICollection<StoredFile>> GetStoredFilesAsync(long partId, StoredFileType? fileType, IUserContext userContext);
+
+        /// <summary>
+        /// Get existing user uploaded files
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<ICollection<StoredFile>> GetStoredFilesAsync(PaginatedRequest request, IUserContext userContext);
     }
 }
