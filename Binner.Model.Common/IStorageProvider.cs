@@ -261,5 +261,21 @@ namespace Binner.Model.Common
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<ICollection<StoredFile>> GetStoredFilesAsync(PaginatedRequest request, IUserContext userContext);
+
+        /// <summary>
+        /// Update existing user uploaded files
+        /// </summary>
+        /// <param name="storedFile"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<StoredFile> UpdateStoredFileAsync(StoredFile storedFile, IUserContext userContext);
+
+        /// <summary>
+        /// Delete existing user uploaded file
+        /// </summary>
+        /// <param name="storedFile"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<bool> DeleteStoredFileAsync(StoredFile storedFile, IUserContext userContext);
     }
 }
