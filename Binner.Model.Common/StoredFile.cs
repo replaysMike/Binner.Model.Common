@@ -56,8 +56,8 @@ namespace Binner.Model.Common
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
-            if (obj is StoredFile project)
-                return Equals(project);
+            if (obj is StoredFile storedFile)
+                return Equals(storedFile);
             return false;
         }
 

@@ -1,9 +1,9 @@
 ﻿namespace Binner.Model.Common
 {
-    public class BinnerDbV1 : IBinnerDb
+    public class BinnerDbV2 : IBinnerDb
     {
-        public const byte VersionNumber = 1;
-        public static DateTime VersionCreated = new DateTime(2022, 1, 1);
+        public const byte VersionNumber = 2;
+        public static DateTime VersionCreated = new DateTime(2023, 1, 31);
 
         /// <summary>
         /// Number of parts in database
@@ -51,8 +51,34 @@
         public ICollection<Part> Parts { get; set; } = new List<Part>();
 
         /// <summary>
+        /// Stored/uploaded files
+        /// </summary>
+        public ICollection<StoredFile> StoredFiles { get; set; } = new List<StoredFile>();
+
+        /// <summary>
         /// A checksum for validating the database contents
         /// </summary>
         public string? Checksum { get; set; }
+
+        public BinnerDbV2() { }
+
+        /// <summary>
+        /// Upgrade a database from a previous version
+        /// </summary>
+        /// <param name="previousDatabase"></param>
+        public BinnerDbV2(BinnerDbV1 previousDatabase, Func<BinnerDbV2, string> buildChecksum)
+        {
+            Count = previousDatabase.Count;
+            FirstPartId = previousDatabase.FirstPartId;
+            LastPartId = previousDatabase.LastPartId;
+            DateCreatedUtc= previousDatabase.DateCreatedUtc;
+            DateModifiedUtc =  previousDatabase.DateModifiedUtc;
+            OAuthCredentials = previousDatabase.OAuthCredentials;
+            Projects = previousDatabase.Projects;
+            PartTypes = previousDatabase.PartTypes;
+            Parts = previousDatabase.Parts;
+            StoredFiles = new List<StoredFile>();
+            Checksum = buildChecksum(this);
+        }
     }
 }
