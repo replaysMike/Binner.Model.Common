@@ -15,6 +15,12 @@ namespace Binner.Model.Common
         Task<IBinnerDb> GetDatabaseAsync(IUserContext userContext);
 
         /// <summary>
+        /// Test the database connection configuration
+        /// </summary>
+        /// <returns></returns>
+        Task<ConnectionResponse> TestConnectionAsync();
+
+        /// <summary>
         /// Get an oAuth Credential
         /// </summary>
         /// <param name="providerName">The provider name to fetch</param>
