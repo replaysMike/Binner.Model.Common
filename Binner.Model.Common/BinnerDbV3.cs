@@ -36,11 +36,6 @@
         public ICollection<OAuthCredential> OAuthCredentials { get; set; } = new List<OAuthCredential>();
 
         /// <summary>
-        /// OAuth requests
-        /// </summary>
-        public ICollection<OAuthRequest> OAuthRequests { get; set; } = new List<OAuthRequest>();
-
-        /// <summary>
         /// User defined Projects
         /// </summary>
         public ICollection<Project> Projects { get; set; } = new List<Project>();
@@ -59,6 +54,11 @@
         /// Stored/uploaded files
         /// </summary>
         public ICollection<StoredFile> StoredFiles { get; set; } = new List<StoredFile>();
+
+        /// <summary>
+        /// OAuth requests
+        /// </summary>
+        public ICollection<OAuthRequest> OAuthRequests { get; set; } = new List<OAuthRequest>();
 
         /// <summary>
         /// A checksum for validating the database contents
