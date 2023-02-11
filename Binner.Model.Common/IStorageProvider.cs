@@ -50,7 +50,7 @@ namespace Binner.Model.Common
         /// <param name="providerName">The provider name to fetch</param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<OAuthCredential> GetOAuthCredentialAsync(string providerName, IUserContext userContext);
+        Task<OAuthCredential?> GetOAuthCredentialAsync(string providerName, IUserContext userContext);
 
         /// <summary>
         /// Save an oAuth Credential
@@ -90,7 +90,7 @@ namespace Binner.Model.Common
         /// <param name="partId"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<Part> GetPartAsync(long partId, IUserContext userContext);
+        Task<Part?> GetPartAsync(long partId, IUserContext userContext);
 
         /// <summary>
         /// Get a part by part number
@@ -98,12 +98,12 @@ namespace Binner.Model.Common
         /// <param name="partNumber"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<Part> GetPartAsync(string partNumber, IUserContext userContext);
+        Task<Part?> GetPartAsync(string partNumber, IUserContext userContext);
 
         /// <summary>
         /// Get all parts
         /// </summary>
-        /// <param name="partNumber"></param>
+        /// <param name="request"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<PaginatedResponse<Part>> GetPartsAsync(PaginatedRequest request, IUserContext userContext);
@@ -119,7 +119,7 @@ namespace Binner.Model.Common
         /// <summary>
         /// Find a part that matches any keyword
         /// </summary>
-        /// <param name="keywords">Space seperated keywords</param>
+        /// <param name="keywords">Space separated keywords</param>
         /// <param name="userContext">The user performing the operation</param>
 
         /// <returns></returns>
@@ -139,7 +139,7 @@ namespace Binner.Model.Common
         /// <param name="partType"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<PartType> GetOrCreatePartTypeAsync(PartType partType, IUserContext userContext);
+        Task<PartType?> GetOrCreatePartTypeAsync(PartType partType, IUserContext userContext);
 
         /// <summary>
         /// Get an existing part type
@@ -147,7 +147,7 @@ namespace Binner.Model.Common
         /// <param name="partTypeId"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<PartType> GetPartTypeAsync(long partTypeId, IUserContext userContext);
+        Task<PartType?> GetPartTypeAsync(long partTypeId, IUserContext userContext);
 
         /// <summary>
         /// Update an existing part type
@@ -187,7 +187,7 @@ namespace Binner.Model.Common
         /// <param name="projectId"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<Project> GetProjectAsync(long projectId, IUserContext userContext);
+        Task<Project?> GetProjectAsync(long projectId, IUserContext userContext);
 
         /// <summary>
         /// Get an existing user defined project
@@ -195,7 +195,7 @@ namespace Binner.Model.Common
         /// <param name="projectName"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<Project> GetProjectAsync(string projectName, IUserContext userContext);
+        Task<Project?> GetProjectAsync(string projectName, IUserContext userContext);
 
         /// <summary>
         /// Get an existing user defined project
@@ -266,7 +266,7 @@ namespace Binner.Model.Common
         /// <param name="storedFileId"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<StoredFile> GetStoredFileAsync(long storedFileId, IUserContext userContext);
+        Task<StoredFile?> GetStoredFileAsync(long storedFileId, IUserContext userContext);
 
         /// <summary>
         /// Get an existing user uploaded file
@@ -274,12 +274,13 @@ namespace Binner.Model.Common
         /// <param name="filename"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<StoredFile> GetStoredFileAsync(string filename, IUserContext userContext);
+        Task<StoredFile?> GetStoredFileAsync(string filename, IUserContext userContext);
 
         /// <summary>
         /// Get existing user uploaded files
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="partId"></param>
+        /// <param name="fileType"></param>
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<ICollection<StoredFile>> GetStoredFilesAsync(long partId, StoredFileType? fileType, IUserContext userContext);

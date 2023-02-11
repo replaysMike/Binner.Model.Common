@@ -6,18 +6,18 @@ namespace Binner.Model.Common
     public class WhereCondition
     {
         public string? Sql { get; set; }
-        public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
+        public Dictionary<string, object?> Parameters { get; set; } = new Dictionary<string, object?>();
 
         public static WhereCondition IsSql(string? sql)
         {
             return new WhereCondition()
             {
-                Parameters = new Dictionary<string, object>(),
+                Parameters = new Dictionary<string, object?>(),
                 Sql = sql
             };
         }
 
-        public static WhereCondition IsParameter(int count, object value)
+        public static WhereCondition IsParameter(int count, object? value)
         {
             return new WhereCondition()
             {
@@ -28,7 +28,7 @@ namespace Binner.Model.Common
 
         public static WhereCondition IsCollection(ref int countStart, IEnumerable values)
         {
-            var parameters = new Dictionary<string, object>();
+            var parameters = new Dictionary<string, object?>();
             var sql = new StringBuilder("(");
             foreach (var value in values)
             {
