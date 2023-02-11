@@ -24,22 +24,25 @@ namespace Binner.Model.Common
         /// Create an (pending) oAuth request
         /// </summary>
         /// <param name="authRequest"></param>
+        /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<OAuthAuthorization> CreateOAuthRequestAsync(OAuthAuthorization authRequest);
+        Task<OAuthAuthorization> CreateOAuthRequestAsync(OAuthAuthorization authRequest, IUserContext userContext);
 
         /// <summary>
         /// Update a oAuth request
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="authRequest"></param>
+        /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<OAuthAuthorization> UpdateOAuthRequestAsync(OAuthAuthorization authRequest);
+        Task<OAuthAuthorization> UpdateOAuthRequestAsync(OAuthAuthorization authRequest, IUserContext userContext);
 
         /// <summary>
         /// Get an existing (pending) oAuth request
         /// </summary>
         /// <param name="requestId">The request Id initiated the request</param>
+        /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
-        Task<OAuthAuthorization?> GetOAuthRequestAsync(Guid requestId);
+        Task<OAuthAuthorization?> GetOAuthRequestAsync(Guid requestId, IUserContext userContext);
 
         /// <summary>
         /// Get an oAuth Credential
