@@ -1,4 +1,6 @@
-﻿namespace Binner.Model.Common
+﻿using System.Collections.Generic;
+
+namespace Binner.Model.Common
 {
     public interface IBinnerDb
     {

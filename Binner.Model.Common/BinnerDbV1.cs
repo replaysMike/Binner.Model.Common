@@ -31,9 +31,14 @@
         public DateTime DateModifiedUtc { get; set; }
 
         /// <summary>
-        /// Defined part types
+        /// OAuth credentials
         /// </summary>
         public ICollection<OAuthCredential> OAuthCredentials { get; set; } = new List<OAuthCredential>();
+
+        /// <summary>
+        /// OAuth requests
+        /// </summary>
+        public ICollection<OAuthRequest> OAuthRequests { get; set; } = new List<OAuthRequest>();
 
         /// <summary>
         /// User defined Projects

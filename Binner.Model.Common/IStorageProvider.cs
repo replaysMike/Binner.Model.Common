@@ -21,6 +21,27 @@ namespace Binner.Model.Common
         Task<ConnectionResponse> TestConnectionAsync();
 
         /// <summary>
+        /// Create an (pending) oAuth request
+        /// </summary>
+        /// <param name="authRequest"></param>
+        /// <returns></returns>
+        Task<OAuthAuthorization> CreateOAuthRequestAsync(OAuthAuthorization authRequest);
+
+        /// <summary>
+        /// Update a oAuth request
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<OAuthAuthorization> UpdateOAuthRequestAsync(OAuthAuthorization authRequest);
+
+        /// <summary>
+        /// Get an existing (pending) oAuth request
+        /// </summary>
+        /// <param name="requestId">The request Id initiated the request</param>
+        /// <returns></returns>
+        Task<OAuthAuthorization?> GetOAuthRequestAsync(Guid requestId);
+
+        /// <summary>
         /// Get an oAuth Credential
         /// </summary>
         /// <param name="providerName">The provider name to fetch</param>

@@ -1,9 +1,9 @@
 ﻿namespace Binner.Model.Common
 {
-    public class BinnerDbV2 : IBinnerDb
+    public class BinnerDbV3 : IBinnerDb
     {
-        public const byte VersionNumber = 2;
-        public static DateTime VersionCreated = new DateTime(2023, 1, 31);
+        public const byte VersionNumber = 3;
+        public static DateTime VersionCreated = new DateTime(2023, 2, 10);
 
         /// <summary>
         /// Number of parts in database
@@ -65,13 +65,33 @@
         /// </summary>
         public string? Checksum { get; set; }
 
-        public BinnerDbV2() { }
+        public BinnerDbV3() { }
 
         /// <summary>
         /// Upgrade a database from a previous version
         /// </summary>
         /// <param name="previousDatabase"></param>
-        public BinnerDbV2(BinnerDbV1 previousDatabase, Func<BinnerDbV2, string> buildChecksum)
+        public BinnerDbV3(BinnerDbV1 previousDatabase, Func<BinnerDbV3, string> buildChecksum)
+        {
+            Count = previousDatabase.Count;
+            FirstPartId = previousDatabase.FirstPartId;
+            LastPartId = previousDatabase.LastPartId;
+            DateCreatedUtc = previousDatabase.DateCreatedUtc;
+            DateModifiedUtc = previousDatabase.DateModifiedUtc;
+            OAuthCredentials = previousDatabase.OAuthCredentials;
+            Projects = previousDatabase.Projects;
+            PartTypes = previousDatabase.PartTypes;
+            Parts = previousDatabase.Parts;
+            StoredFiles = new List<StoredFile>();
+            OAuthRequests = new List<OAuthRequest>();
+            Checksum = buildChecksum(this);
+        }
+
+        /// <summary>
+        /// Upgrade a database from a previous version
+        /// </summary>
+        /// <param name="previousDatabase"></param>
+        public BinnerDbV3(BinnerDbV2 previousDatabase, Func<BinnerDbV3, string> buildChecksum)
         {
             Count = previousDatabase.Count;
             FirstPartId = previousDatabase.FirstPartId;
@@ -82,7 +102,8 @@
             Projects = previousDatabase.Projects;
             PartTypes = previousDatabase.PartTypes;
             Parts = previousDatabase.Parts;
-            StoredFiles = new List<StoredFile>();
+            StoredFiles = previousDatabase.StoredFiles;
+            OAuthRequests = new List<OAuthRequest>();
             Checksum = buildChecksum(this);
         }
     }
