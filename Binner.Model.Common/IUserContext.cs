@@ -5,17 +5,17 @@
         /// <summary>
         /// Email address
         /// </summary>
-        string EmailAddress { get; set; }
+        string? EmailAddress { get; set; }
 
         /// <summary>
         /// Name
         /// </summary>
-        string Name { get; set; }
+        string? Name { get; set; }
 
         /// <summary>
         /// Phone number
         /// </summary>
-        string PhoneNumber { get; set; }
+        string? PhoneNumber { get; set; }
 
         /// <summary>
         /// User Id

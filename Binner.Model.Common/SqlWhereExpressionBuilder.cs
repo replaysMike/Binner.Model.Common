@@ -49,7 +49,7 @@ namespace Binner.Model.Common
             foreach (var p in whereParts.Parameters)
             {
                 var val = $"@{p.Key}";
-                finalQuery = finalQuery.Replace(val, p.Value.ToString());
+                finalQuery = finalQuery.Replace(val, p.Value?.ToString());
             }
             return finalQuery.ToString();
         }
