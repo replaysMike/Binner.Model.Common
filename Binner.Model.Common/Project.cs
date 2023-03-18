@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AnySerializer;
 
 namespace Binner.Model.Common
 {
@@ -42,6 +43,18 @@ namespace Binner.Model.Common
         /// Optional user id to associate
         /// </summary>
         public int? UserId { get; set; }
+
+        /// <summary>
+        /// Custom notes for the project (BOM)
+        /// </summary>
+        [PropertyVersion("BinnerDbV4")]
+        public string? Notes { get; set; }
+
+        /// <summary>
+        /// Modification date
+        /// </summary>
+        [PropertyVersion("BinnerDbV4")]
+        public DateTime DateModifiedUtc { get; set; } = DateTime.UtcNow;
 
         public override bool Equals(object? obj)
         {

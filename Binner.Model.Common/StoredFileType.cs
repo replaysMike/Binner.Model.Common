@@ -32,6 +32,10 @@
         /// <summary>
         /// Other file type
         /// </summary>
-        Other
+        Other,
+        /// <summary>
+        /// Pcb layout files
+        /// </summary>
+        Pcb
     }
 }

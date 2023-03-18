@@ -305,5 +305,200 @@ namespace Binner.Model.Common
         /// <param name="userContext">The user performing the operation</param>
         /// <returns></returns>
         Task<bool> DeleteStoredFileAsync(StoredFile storedFile, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a pcb BOM
+        /// </summary>
+        /// <param name="pcbId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<Pcb?> GetPcbAsync(long pcbId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a list of pcb's for a project
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ICollection<Pcb>> GetPcbsAsync(long projectId, IUserContext? userContext);
+
+        /// <summary>
+        /// Add a pcb BOM
+        /// </summary>
+        /// <param name="pcb"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<Pcb> AddPcbAsync(Pcb pcb, IUserContext? userContext);
+
+        /// <summary>
+        /// Update pcb in a Project BOM
+        /// </summary>
+        /// <param name="pcb"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<Pcb> UpdatePcbAsync(Pcb pcb, IUserContext? userContext);
+
+        /// <summary>
+        /// Remove a pcb from a Project BOM
+        /// </summary>
+        /// <param name="pcb"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<bool> DeletePcbAsync(Pcb pcb, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a stored file assignment BOM
+        /// </summary>
+        /// <param name="pcbStoredFileAssignmentId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<PcbStoredFileAssignment?> GetPcbStoredFileAssignmentAsync(long pcbStoredFileAssignmentId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a list of stored file assignments for a pcb BOM
+        /// </summary>
+        /// <param name="pcbId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ICollection<PcbStoredFileAssignment>> GetPcbStoredFileAssignmentsAsync(long pcbId, IUserContext? userContext);
+
+        /// <summary>
+        /// Add a stored file to a Pcb BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<PcbStoredFileAssignment> AddPcbStoredFileAssignmentAsync(PcbStoredFileAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Update pcb stored file assignment  BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<PcbStoredFileAssignment> UpdatePcbStoredFileAssignmentAsync(PcbStoredFileAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Remove a pcb stored file assignment BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<bool> RemovePcbStoredFileAssignmentAsync(PcbStoredFileAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a project part assignment BOM based on the part only
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ICollection<ProjectPartAssignment>> GetPartAssignmentsAsync(long partId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a project part assignment BOM
+        /// </summary>
+        /// <param name="projectPartAssignmentId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPartAssignment?> GetProjectPartAssignmentAsync(long projectPartAssignmentId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a project part assignment BOM
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="partId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPartAssignment?> GetProjectPartAssignmentAsync(long projectId, long partId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a project part assignment BOM
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="partName"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPartAssignment?> GetProjectPartAssignmentAsync(long projectId, string partName, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a list of project part assignments for a project BOM
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ICollection<ProjectPartAssignment>> GetProjectPartAssignmentsAsync(long projectId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a list of project part assignments for a project BOM
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="request"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<ICollection<ProjectPartAssignment>> GetProjectPartAssignmentsAsync(long projectId, PaginatedRequest request, IUserContext? userContext);
+
+        /// <summary>
+        /// Add a part to a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPartAssignment> AddProjectPartAssignmentAsync(ProjectPartAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Update part in a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPartAssignment> UpdateProjectPartAssignmentAsync(ProjectPartAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Remove a part from a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<bool> RemoveProjectPartAssignmentAsync(ProjectPartAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a project pcb assignment BOM
+        /// </summary>
+        /// <param name="projectPcbAssignmentId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPcbAssignment?> GetProjectPcbAssignmentAsync(long projectPcbAssignmentId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get a list of project pcb assignments for a project BOM
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ICollection<ProjectPcbAssignment>> GetProjectPcbAssignmentsAsync(long projectId, IUserContext? userContext);
+
+        /// <summary>
+        /// Add a pcb to a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPcbAssignment> AddProjectPcbAssignmentAsync(ProjectPcbAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Update pcb in a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<ProjectPcbAssignment> UpdateProjectPcbAssignmentAsync(ProjectPcbAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Remove a pcb from a Project BOM
+        /// </summary>
+        /// <param name="assignment"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        Task<bool> RemoveProjectPcbAssignmentAsync(ProjectPcbAssignment assignment, IUserContext? userContext);
     }
 }

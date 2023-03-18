@@ -1,9 +1,9 @@
 ﻿namespace Binner.Model.Common
 {
-    public class BinnerDbV3 : IBinnerDb
+    public class BinnerDbV4 : IBinnerDb
     {
-        public const byte VersionNumber = 3;
-        public static DateTime VersionCreated = new DateTime(2023, 2, 10);
+        public const byte VersionNumber = 4;
+        public static DateTime VersionCreated = new DateTime(2023, 3, 13);
 
         /// <summary>
         /// Number of parts in database
@@ -36,9 +36,29 @@
         public ICollection<OAuthCredential> OAuthCredentials { get; set; } = new List<OAuthCredential>();
 
         /// <summary>
+        /// Pcb - printed circuit boards (BOM)
+        /// </summary>
+        public ICollection<Pcb> Pcbs { get; set; } = new List<Pcb>();
+
+        /// <summary>
+        /// Pcb - printed circuit boards (BOM)
+        /// </summary>
+        public ICollection<PcbStoredFileAssignment> PcbStoredFileAssignments { get; set; } = new List<PcbStoredFileAssignment>();
+
+        /// <summary>
         /// User defined Projects
         /// </summary>
         public ICollection<Project> Projects { get; set; } = new List<Project>();
+
+        /// <summary>
+        /// Parts that are part of a project (BOM)
+        /// </summary>
+        public ICollection<ProjectPartAssignment> ProjectPartAssignments { get; set; } = new List<ProjectPartAssignment>();
+
+        /// <summary>
+        /// Pcb's that are part of a project (BOM)
+        /// </summary>
+        public ICollection<ProjectPcbAssignment> ProjectPcbAssignments { get; set; } = new List<ProjectPcbAssignment>();
 
         /// <summary>
         /// Defined part types
@@ -65,14 +85,14 @@
         /// </summary>
         public string? Checksum { get; set; }
 
-        public BinnerDbV3() { }
+        public BinnerDbV4() { }
 
         /// <summary>
         /// Upgrade a database from a previous version
         /// </summary>
         /// <param name="previousDatabase"></param>
         /// <param name="buildChecksum"></param>
-        public BinnerDbV3(BinnerDbV1 previousDatabase, Func<BinnerDbV3, string> buildChecksum)
+        public BinnerDbV4(BinnerDbV1 previousDatabase, Func<BinnerDbV4, string> buildChecksum)
         {
             Count = previousDatabase.Count;
             FirstPartId = previousDatabase.FirstPartId;
@@ -91,7 +111,27 @@
         /// </summary>
         /// <param name="previousDatabase"></param>
         /// <param name="buildChecksum"></param>
-        public BinnerDbV3(BinnerDbV2 previousDatabase, Func<BinnerDbV3, string> buildChecksum)
+        public BinnerDbV4(BinnerDbV2 previousDatabase, Func<BinnerDbV4, string> buildChecksum)
+        {
+            Count = previousDatabase.Count;
+            FirstPartId = previousDatabase.FirstPartId;
+            LastPartId = previousDatabase.LastPartId;
+            DateCreatedUtc= previousDatabase.DateCreatedUtc;
+            DateModifiedUtc =  previousDatabase.DateModifiedUtc;
+            OAuthCredentials = previousDatabase.OAuthCredentials;
+            Projects = previousDatabase.Projects;
+            PartTypes = previousDatabase.PartTypes;
+            Parts = previousDatabase.Parts;
+            StoredFiles = previousDatabase.StoredFiles;
+            Checksum = buildChecksum(this);
+        }
+
+        /// <summary>
+        /// Upgrade a database from a previous version
+        /// </summary>
+        /// <param name="previousDatabase"></param>
+        /// <param name="buildChecksum"></param>
+        public BinnerDbV4(BinnerDbV3 previousDatabase, Func<BinnerDbV4, string> buildChecksum)
         {
             Count = previousDatabase.Count;
             FirstPartId = previousDatabase.FirstPartId;

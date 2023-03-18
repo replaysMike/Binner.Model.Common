@@ -66,6 +66,7 @@
         /// Upgrade a database from a previous version
         /// </summary>
         /// <param name="previousDatabase"></param>
+        /// <param name="buildChecksum"></param>
         public BinnerDbV2(BinnerDbV1 previousDatabase, Func<BinnerDbV2, string> buildChecksum)
         {
             Count = previousDatabase.Count;
@@ -77,7 +78,6 @@
             Projects = previousDatabase.Projects;
             PartTypes = previousDatabase.PartTypes;
             Parts = previousDatabase.Parts;
-            StoredFiles = new List<StoredFile>();
             Checksum = buildChecksum(this);
         }
     }
