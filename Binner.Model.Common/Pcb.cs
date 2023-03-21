@@ -1,5 +1,4 @@
-﻿using AnySerializer;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Binner.Model.Common
 {

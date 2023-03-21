@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AnySerializer;
+using System.ComponentModel.DataAnnotations;
 
 namespace Binner.Model.Common
 {
@@ -59,6 +60,14 @@ namespace Binner.Model.Common
         /// Optional user id to associate
         /// </summary>
         public int? UserId { get; set; }
+
+        /// <summary>
+        /// The quantity of parts available, used when a part is not associated with this entry (BOM).
+        /// Otherwise, the part's quantity (in stock) should be used.
+        /// </summary>
+        [PropertyVersion("BinnerDbV5")]
+        public int QuantityAvailable { get; set; }
+
 
         public override bool Equals(object? obj)
         {

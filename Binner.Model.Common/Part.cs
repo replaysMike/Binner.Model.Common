@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AnySerializer;
+using System.ComponentModel.DataAnnotations;
 
 namespace Binner.Model.Common
 {
@@ -133,6 +134,12 @@ namespace Binner.Model.Common
         /// The date the record was created
         /// </summary>
         public DateTime DateCreatedUtc { get; set; } = DateTime.UtcNow;
+
+        /// <summary>
+        /// The Arrow part number
+        /// </summary>
+        [PropertyVersion("BinnerDbV5")]
+        public string? ArrowPartNumber { get; set; }
 
         public override bool Equals(object? obj)
         {

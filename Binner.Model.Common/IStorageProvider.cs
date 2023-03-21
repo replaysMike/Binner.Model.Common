@@ -500,5 +500,45 @@ namespace Binner.Model.Common
         /// <param name="userContext"></param>
         /// <returns></returns>
         Task<bool> RemoveProjectPcbAssignmentAsync(ProjectPcbAssignment assignment, IUserContext? userContext);
+
+        /// <summary>
+        /// Create a new part supplier
+        /// </summary>
+        /// <param name="partSupplier"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<PartSupplier> AddPartSupplierAsync(PartSupplier partSupplier, IUserContext? userContext);
+
+        /// <summary>
+        /// Get an existing part supplier
+        /// </summary>
+        /// <param name="partSupplierId"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<PartSupplier?> GetPartSupplierAsync(long partSupplierId, IUserContext? userContext);
+
+        /// <summary>
+        /// Get existing part suppliers for a part
+        /// </summary>
+        /// <param name="partId"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<ICollection<PartSupplier>> GetPartSuppliersAsync(long partId, IUserContext? userContext);
+
+        /// <summary>
+        /// Update an existing part supplier
+        /// </summary>
+        /// <param name="partSupplier"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<PartSupplier> UpdatePartSupplierAsync(PartSupplier partSupplier, IUserContext? userContext);
+
+        /// <summary>
+        /// Delete existing part supplier
+        /// </summary>
+        /// <param name="partSupplier"></param>
+        /// <param name="userContext">The user performing the operation</param>
+        /// <returns></returns>
+        Task<bool> DeletePartSupplierAsync(PartSupplier partSupplier, IUserContext? userContext);
     }
 }
