@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/replaysMike/Binner.Model.Common</RepositoryUrl>
     <PackageTags>binner model common refactor michael brown</PackageTags>
     <PackageReleaseNotes>Binner common model library</PackageReleaseNotes>
-    <Version>1.0.33</Version>
+    <Version>1.0.34</Version>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
