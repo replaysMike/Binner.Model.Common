@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Version>1.0.35</Version>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -12,7 +13,6 @@
     <RepositoryUrl>https://github.com/replaysMike/Binner.Model.Common</RepositoryUrl>
     <PackageTags>binner model common refactor michael brown</PackageTags>
     <PackageReleaseNotes>Binner common model library</PackageReleaseNotes>
-    <Version>1.0.34</Version>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
