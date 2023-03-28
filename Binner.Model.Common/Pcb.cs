@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AnySerializer;
+using System.ComponentModel.DataAnnotations;
 
 namespace Binner.Model.Common
 {
@@ -47,6 +48,18 @@ namespace Binner.Model.Common
         /// Optional user id to associate
         /// </summary>
         public int? UserId { get; set; }
+
+        /// <summary>
+        /// Quantity of PCBs that are produced on every production
+        /// </summary>
+        [PropertyVersion("BinnerDbV6")]
+        public int Quantity { get; set; }
+
+        /// <summary>
+        /// Cost to produce a single PCB board
+        /// </summary>
+        [PropertyVersion("BinnerDbV6")]
+        public double Cost { get; set; }
 
         public override bool Equals(object? obj)
         {

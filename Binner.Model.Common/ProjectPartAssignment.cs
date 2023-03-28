@@ -68,6 +68,14 @@ namespace Binner.Model.Common
         [PropertyVersion("BinnerDbV5")]
         public int QuantityAvailable { get; set; }
 
+        /// <summary>
+        /// Custom reference Id that can be used as a custom designator for the part on the PCB (silkscreen values)
+        /// </summary>
+        [PropertyVersion("BinnerDbV6")]
+        public string? SchematicReferenceId { get; set; }
+
+        [PropertyVersion("BinnerDbV6")]
+        public string? CustomDescription { get; set; }
 
         public override bool Equals(object? obj)
         {
