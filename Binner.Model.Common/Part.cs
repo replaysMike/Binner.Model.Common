@@ -141,6 +141,12 @@ namespace Binner.Model.Common
         [PropertyVersion("BinnerDbV5")]
         public string? ArrowPartNumber { get; set; }
 
+        /// <summary>
+        /// Currency of part
+        /// </summary>
+        [PropertyVersion("BinnerDbV7")]
+        public string? Currency { get; set; }
+
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;

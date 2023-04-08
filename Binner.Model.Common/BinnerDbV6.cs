@@ -168,6 +168,10 @@
             PartTypes = previousDatabase.PartTypes;
             Parts = previousDatabase.Parts;
             StoredFiles = previousDatabase.StoredFiles;
+            ProjectPartAssignments = previousDatabase.ProjectPartAssignments;
+            ProjectPcbAssignments = previousDatabase.ProjectPcbAssignments;
+            PcbStoredFileAssignments = previousDatabase.PcbStoredFileAssignments;
+            Pcbs = previousDatabase.Pcbs;
             Checksum = buildChecksum(this);
         }
 
@@ -188,6 +192,11 @@
             PartTypes = previousDatabase.PartTypes;
             Parts = previousDatabase.Parts;
             StoredFiles = previousDatabase.StoredFiles;
+            ProjectPartAssignments = previousDatabase.ProjectPartAssignments;
+            ProjectPcbAssignments = previousDatabase.ProjectPcbAssignments;
+            PcbStoredFileAssignments = previousDatabase.PcbStoredFileAssignments;
+            PartSuppliers = previousDatabase.PartSuppliers;
+            Pcbs = previousDatabase.Pcbs;
             Checksum = buildChecksum(this);
         }
     }

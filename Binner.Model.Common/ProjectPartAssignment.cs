@@ -77,6 +77,18 @@ namespace Binner.Model.Common
         [PropertyVersion("BinnerDbV6")]
         public string? CustomDescription { get; set; }
 
+        /// <summary>
+        /// Cost of part
+        /// </summary>
+        [PropertyVersion("BinnerDbV7")]
+        public double Cost { get; set; }
+
+        /// <summary>
+        /// Currency of part
+        /// </summary>
+        [PropertyVersion("BinnerDbV7")]
+        public string? Currency { get; set; }
+
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
