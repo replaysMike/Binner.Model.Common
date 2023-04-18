@@ -21,5 +21,7 @@
         /// User Id
         /// </summary>
         int UserId { get; set; }
+
+        int OrganizationId { get; set; }
     }
 }
