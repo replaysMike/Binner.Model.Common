@@ -86,6 +86,10 @@
         /// </summary>
         public string ReturnToUrl { get; set; } = string.Empty;
 
+        public OAuthAuthorization()
+        {
+        }
+
         public OAuthAuthorization(string provider, Guid id)
         {
             Provider = provider;
